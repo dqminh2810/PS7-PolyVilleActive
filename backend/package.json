@@ -1,0 +1,58 @@
+{
+  "name": "back-end-starter-3a-pns-2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "dev": "./node_modules/.bin/nodemon app/index.js",
+    "lint": "./node_modules/.bin/eslint -c .eslintrc.js app/",
+    "lint:fix": "./node_modules/.bin/eslint -c .eslintrc.js app/ --fix",
+    "test": "mocha 'test/**/*.test.js' --timeout 10000"
+  },
+  "precommit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delmotte/back-end-starter-3a-pns-2019.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delmotte/back-end-starter-3a-pns-2019/issues"
+  },
+  "homepage": "https://github.com/delmotte/back-end-starter-3a-pns-2019#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.8.0",
+    "fs": "0.0.1-security",
+    "joi": "14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^8.2.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.8",
+    "morgan": "^1.9.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "5.13.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.16.0",
+    "nodemon": "^1.18.10",
+    "pre-commit": "1.2.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "mocks/*"
+    ]
+  }
+}

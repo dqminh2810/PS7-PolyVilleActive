@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  backend-ps7-db:
+    image: mongo
+    container_name: backend-ps7-db
+    volumes:
+    - "./backend-ps7-db/data:/data/db"
+    ports:
+    - "27017:27017"
+    networks: #here
+    - my-network
+
+  backend-ps7-app:
+    image: dqminh2810/backend-ps7-app:prod
+    container_name: backend-ps7-app
+    build:
+      context: .
+      target: prod
+    volumes:
+      - ".:/var/www"
+    ports:
+      - "9428:9428"
+    depends_on:
+      - backend-ps7-db
+    networks: #here
+      - my-network
+    environment:
+      - URL_MONGO=mongodb://backend-ps7-db:27017/ps7
+
+  backend-ps7-ngrok:
+    image: wernight/ngrok
+    container_name: backend-ps7-ngrok
+    ports:
+    - "4040:4040"
+    networks: #here
+    - my-network
+    command: ngrok http backend-ps7-app:9428
+    depends_on:
+      - backend-ps7-app
+
+networks: #here
+  my-network:
+    driver: bridge
